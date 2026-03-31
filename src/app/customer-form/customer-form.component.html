@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Registrar Nuevo Cliente</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="dni" class="form-label">DNI (8 dígitos)</label>
+                <input type="text" id="dni" class="form-control" formControlName="dni" maxlength="8">
+                <div *ngIf="submitted && f['dni'].errors" class="text-danger">
+                  DNI es requerido y debe tener 8 caracteres.
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="cellphone" class="form-label">Celular (9 dígitos)</label>
+                <input type="text" id="cellphone" class="form-control" formControlName="cellphone" maxlength="9">
+                <div *ngIf="submitted && f['cellphone'].errors" class="text-danger">
+                  Celular es requerido y debe tener 9 caracteres.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label">Nombres</label>
+                <input type="text" id="firstName" class="form-control" formControlName="firstName">
+                <div *ngIf="submitted && f['firstName'].errors" class="text-danger">
+                  Nombre es requerido.
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="lastName" class="form-label">Apellidos</label>
+                <input type="text" id="lastName" class="form-control" formControlName="lastName">
+                <div *ngIf="submitted && f['lastName'].errors" class="text-danger">
+                  Apellido es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" formControlName="email">
+              <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                Ingrese un email válido.
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="rol" class="form-label">Rol</label>
+                <select id="rol" class="form-select" formControlName="rol">
+                  <option value="CUSTOMER">CLIENTE</option>
+                  <option value="ADMIN">ADMINISTRADOR</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="state" class="form-label">Estado</label>
+                <select id="state" class="form-select" formControlName="state">
+                  <option value="A">Activo</option>
+                  <option value="I">Inactivo</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg w-100" [disabled]="customerForm.invalid">
+              Guardar Cliente
+            </button>
+          </form>
+
+          <div *ngIf="successMessage" class="alert alert-success mt-3">
+            {{ successMessage }}
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

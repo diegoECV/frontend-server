@@ -1,0 +1,39 @@
+/* Estilos para el componente de lista de clientes */
+
+.table-responsive {
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.modal-dialog {
+  margin: 0;
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+}
+
+.btn-sm {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .table {
+    font-size: 0.875rem;
+  }
+
+  .btn-sm {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+}
