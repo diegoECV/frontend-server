@@ -8,7 +8,7 @@ import { Customer } from '../models/customer.model';
 })
 export class CustomerService {
 
-  private readonly apiUrl = 'http://localhost:8080/api/customers';   // ← Cambia esto después por la IP del backend
+  private readonly apiUrl = 'http://50.16.194.104:8080/api/customers';   // ← Cambia esto después por la IP del backend
 
   constructor(private readonly http: HttpClient) { }
 
