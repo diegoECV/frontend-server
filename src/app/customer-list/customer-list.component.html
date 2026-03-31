@@ -84,26 +84,26 @@
   </div>
 
   <!-- Modal de edición -->
-  <div *ngIf="selectedCustomer" class="modal show d-block" style="background-color: rgba(0,0,0,0.5);">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-warning">
-          <h5 class="modal-title">Editar Cliente</h5>
-          <button type="button" class="btn-close" (click)="cancelEdit()"></button>
+  <div *ngIf="selectedCustomer" class="modal show d-block" style="background-color: rgba(0,0,0,0.5);" (click)="$event.target === $event.currentTarget ? cancelEdit() : null">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title">✏️ Editar Cliente</h5>
+          <button type="button" class="btn-close" (click)="cancelEdit()" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
               <label for="edit-dni" class="form-label">DNI</label>
-              <input type="text" id="edit-dni" class="form-control" [(ngModel)]="selectedCustomer.dni" name="dni" maxlength="8">
+              <input type="text" id="edit-dni" class="form-control" [(ngModel)]="selectedCustomer.dni" name="dni" maxlength="8" required>
             </div>
             <div class="mb-3">
               <label for="edit-firstName" class="form-label">Nombres</label>
-              <input type="text" id="edit-firstName" class="form-control" [(ngModel)]="selectedCustomer.firstName" name="firstName">
+              <input type="text" id="edit-firstName" class="form-control" [(ngModel)]="selectedCustomer.firstName" name="firstName" required>
             </div>
             <div class="mb-3">
               <label for="edit-lastName" class="form-label">Apellidos</label>
-              <input type="text" id="edit-lastName" class="form-control" [(ngModel)]="selectedCustomer.lastName" name="lastName">
+              <input type="text" id="edit-lastName" class="form-control" [(ngModel)]="selectedCustomer.lastName" name="lastName" required>
             </div>
             <div class="mb-3">
               <label for="edit-email" class="form-label">Email</label>
@@ -131,7 +131,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
-          <button type="button" class="btn btn-warning" (click)="updateCustomer()">Guardar Cambios</button>
+          <button type="button" class="btn btn-success" (click)="updateCustomer()">✔️ Guardar Cambios</button>
         </div>
       </div>
     </div>

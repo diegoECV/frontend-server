@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CustomerService } from '../services/customer.service';
@@ -17,6 +17,8 @@ export class CustomerFormComponent implements OnInit {
   submitted = false;
   successMessage = '';
   errorMessage = '';
+
+  @Output() goToList = new EventEmitter<void>();
 
   constructor(
     private readonly fb: FormBuilder,
@@ -61,5 +63,10 @@ export class CustomerFormComponent implements OnInit {
         this.errorMessage = 'Error al crear el cliente. Verifica que el backend esté corriendo.';
       }
     });
+  }
+
+  // Emitir evento para ir a la lista
+  navigateToList(): void {
+    this.goToList.emit();
   }
 }

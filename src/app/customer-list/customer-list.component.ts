@@ -21,6 +21,7 @@ export class CustomerListComponent implements OnInit {
   constructor(private readonly customerService: CustomerService) { }
 
   ngOnInit(): void {
+    console.log('🔄 Inicializando CustomerListComponent');
     this.loadCustomers();
   }
 
@@ -32,10 +33,11 @@ export class CustomerListComponent implements OnInit {
       next: (data: Customer[]) => {
         this.customers = data;
         this.loading = false;
+        console.log('✅ Clientes cargados:', data);
       },
       error: (err: any) => {
-        console.error(err);
-        this.errorMessage = 'Error al cargar los clientes. Verifica que el backend esté corriendo.';
+        console.error('❌ Error al cargar clientes:', err);
+        this.errorMessage = 'Error al cargar los clientes. Verifica que el backend esté corriendo: http://50.16.194.104:8080';
         this.loading = false;
       }
     });
